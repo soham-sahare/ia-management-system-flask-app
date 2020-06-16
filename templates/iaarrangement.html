@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Arrangement - IA Management System</title>
+</head>
+<body>
+    <h1>IA ARRANGEMENT</h1>
+
+    <form method="post" action="/success2" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <label>Enter your gmail / yahoo / outlook / rediffmail email and password</label>
+                <label>We dont store your account password</label> <br>
+
+                <br>
+                <input type="email"  placeholder="Email" required name="email">
+                <input type="password"  placeholder="Password" required name="password"> <br>
+
+                <br>
+
+                <label>File to be sent : (.pdf)</label><input type="file" name="file1" autocomplete="off" required>
+                <label>Whom to to be sent : (.csv, .xlxs)</label><input type="file" name="file2" autocomplete="off" required>
+    
+                <input type="submit" value="Submit">
+            </p>
+        </dl>
+    </form>
+    
+    <form action="/main">
+    
+        <input type="submit" value="Back">
+    </form>
+
+    
+</body>
+</html>

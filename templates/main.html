@@ -1,0 +1,44 @@
+<!doctype html>
+<title>Welcome - IA Management System</title>
+<h2>Select a file to upload</h2>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul class=flashes>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+
+<br>
+
+<form action="/logout" method="POST">
+
+	<input type="submit" value="Logout">
+
+</form>
+<br>
+
+<form action="/ia1" method="post">
+
+	<input type="submit" value="Send IA1 mail">
+
+</form>
+<br>
+
+<form action="/ia1and2" method="post">
+
+	<input type="submit" value="Send IA1 and IA2 mail">
+
+</form>
+<br>
+
+<form action="/iaarrangement" method="post">
+
+	<input type="submit" value="Send IA seating arrangement mail">
+
+</form>
+<br>

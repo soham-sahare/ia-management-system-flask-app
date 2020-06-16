@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA1 mail - IA Management System</title>
+</head>
+<body>
+
+    <h1>To send IA1 mail</h1>
+
+    <form method="post" action="/success" enctype="multipart/form-data">
+        <dl>
+            <p>
+
+                <label>Enter your gmail / yahoo / outlook / rediffmail email and password</label>
+                <label>We dont store your account password</label> <br>
+
+                <br>
+                <input type="email"  placeholder="Email" required name="email">
+                <input type="password"  placeholder="Password" required name="password"> <br>
+
+                <br>
+                <label>(.csv, .xlxs)</label>
+                <input type="file" name="file" autocomplete="off" required>
+                <input type="submit" value="Submit">
+    
+            </p>
+        </dl>
+    </form>
+
+    <form action="/main">
+    
+        <input type="submit" value="Back">
+    </form>
+
+</body>
+</html>
