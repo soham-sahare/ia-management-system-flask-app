@@ -32,76 +32,68 @@ def mail(df, e, p):
         server = smtplib.SMTP('smtp.outlook.com', 587)
         server.starttls()
         server.login(from_, password)
-        success = True
     except :
 
         try:
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.starttls()
             server.login(from_, password)
-            success = True
         except:
 
             try:
                 server = smtplib.SMTP('smtp.mail.yahoo.com', 587)
                 server.starttls()
                 server.login(from_, password)
-                success = True
             except:
                 
                 try:
                     server = smtplib.SMTP('smtp.rediffmailpro.com', 587)
                     server.starttls()
                     server.login(from_, password)
-                    success = True
                 except:
                     
                     try:
                         server = smtplib.SMTP('smtp.rediffmail.com', 25)
                         server.starttls()
                         server.login(from_, password)
-                        success = True
                     except:
-                        success = False
                         print("Login Unsuccessfull")
+                        return "Login Unsuccessfull"
 
-    if (success == True):
+    
 
-        for i, j in zip(to, name) :
+    for i, j in zip(to, name) :
 
-            data = MIMEMultipart()
-            data['To'] = i
-            data['From'] = from_
-            data['Subject'] = "IA"
+        data = MIMEMultipart()
+        data['To'] = i
+        data['From'] = from_
+        data['Subject'] = "IA"
 
-            body = "Your Report"
+        body = "Your Report"
 
-            data.attach(MIMEText(body, 'plain'))
+        data.attach(MIMEText(body, 'plain'))
 
-            p = "myfolder/{}.pdf".format(j)
-            filename = p
+        p = "myfolder/{}.pdf".format(j)
+        filename = p
 
-            attachment = open(filename, "rb")
+        attachment = open(filename, "rb")
 
-            p = MIMEBase('application', 'octet-stream')
+        p = MIMEBase('application', 'octet-stream')
 
-            p.set_payload((attachment).read())
+        p.set_payload((attachment).read())
 
-            encoders.encode_base64(p)
+        encoders.encode_base64(p)
 
-            p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+        p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 
-            data.attach(p)
-            
+        data.attach(p)
+        
 
-            text = data.as_string()
-            server.sendmail(from_, i, text)
-            attachment.close()
+        text = data.as_string()
+        server.sendmail(from_, i, text)
+        attachment.close()
 
-        server.quit()
-
-    else:
-        return ("Enter valid email and password")
+    server.quit()
 
     return clean()
 
@@ -199,74 +191,64 @@ def arrangement(l1, l2, email, password):
         server = smtplib.SMTP('smtp.outlook.com', 587)
         server.starttls()
         server.login(from_, password)
-        success = True
     except :
 
         try:
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.starttls()
             server.login(from_, password)
-            success = True
         except:
 
             try:
                 server = smtplib.SMTP('smtp.mail.yahoo.com', 587)
                 server.starttls()
                 server.login(from_, password)
-                success = True
             except:
                 
                 try:
                     server = smtplib.SMTP('smtp.rediffmailpro.com', 587)
                     server.starttls()
                     server.login(from_, password)
-                    success = True
                 except:
                     
                     try:
                         server = smtplib.SMTP('smtp.rediffmail.com', 25)
                         server.starttls()
                         server.login(from_, password)
-                        success = True
                     except:
-                        success = False
                         print("Login Unsuccessfull")
-                        
-    if (success == True):
+                        return "Login Unsuccessfull"
 
-        for i in to:
+    for i in to:
 
-            data = MIMEMultipart()
-            data['To'] = i
-            data['From'] = from_
-            data['Subject'] = "IA Seating Arrangement"
+        data = MIMEMultipart()
+        data['To'] = i
+        data['From'] = from_
+        data['Subject'] = "IA Seating Arrangement"
 
-            body = "Be sure to be 30 minutes before the exam. All the best!"
+        body = "Be sure to be 30 minutes before the exam. All the best!"
 
-            data.attach(MIMEText(body, 'plain'))
+        data.attach(MIMEText(body, 'plain'))
 
-            filename = l1
+        filename = l1
 
-            attachment = open(filename, "rb")
+        attachment = open(filename, "rb")
 
-            p = MIMEBase('application', 'octet-stream')
+        p = MIMEBase('application', 'octet-stream')
 
-            p.set_payload((attachment).read())
+        p.set_payload((attachment).read())
 
-            encoders.encode_base64(p)
+        encoders.encode_base64(p)
 
-            p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+        p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 
-            data.attach(p)
-            
+        data.attach(p)
+        
 
-            text = data.as_string()
-            server.sendmail(from_, i, text)
-            attachment.close()
-        server.quit()
-
-    else:
-        return ("Enter valid email and password")
+        text = data.as_string()
+        server.sendmail(from_, i, text)
+        attachment.close()
+    server.quit()
 
     return clean()
 
