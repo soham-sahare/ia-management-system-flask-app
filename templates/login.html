@@ -5,21 +5,26 @@
 {% block title %} Login {% endblock %}
 
 {% block content %}
-    <h2>Login now!</h2>
-    <p>Enter you username and password</p>
 
-    <form action="{{ url_for('login') }}", method="POST">
-        {{ displayField(form.username, 'Username', autocomplete="off", autofocus=true) }}
-        {{ displayField(form.password, 'Password') }}
-        <div class="form-group">
-            <input type="submit" value="Login" class="btn btn-warning">
-        </div>
-        {{ form.csrf_token }}
-    </form>
+    <h1>IA Management System</h1>
 
-    
-    <form action="/">
-        <label>or else</label><input type="submit" value="Signup">
-    </form>
+    <div class="inner">
+
+        <h2>Login</h2>
+
+        <form action="{{ url_for('login') }}", method="POST">
+            {{ displayField(form.username, 'Username', autocomplete="off", autofocus=true) }}
+            {{ displayField(form.password, 'Password') }}
+            <div class="form-group">
+                <input type="submit" value="Login"id="submit">
+            </div>
+            {{ form.csrf_token }}
+        </form>
+
+        
+        <form action="/">
+            <label>Not Sign in yet?</label><input type="submit" value="Signup" id="submit">
+        </form>
+    </div>
     
 {% endblock %}
