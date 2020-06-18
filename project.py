@@ -1,6 +1,7 @@
 import pandas as pd
 from fpdf import FPDF 
 from datetime import datetime
+from flask import redirect, url_for, render_template
 
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -18,7 +19,7 @@ def clean():
         for file in files:
             os.remove(os.path.join(root, file))
 
-    return "Mail Sent Successfully"
+    return render_template("mysuccess.html")
 
 def mail(df, e, p):
    
@@ -63,7 +64,8 @@ def mail(df, e, p):
                         success = True
                     except:
                         success = False
-                        print("Login Unsuccessfull")
+                        return render_template("myfail.html")
+
 
     if (success == True):
 
@@ -176,7 +178,8 @@ def readfile(l, e, p):
         try:
             df = pd.read_csv(l)
         except:
-            return "Failed : Check your format"
+            return render_template("myfail.html")
+
     
     return process(df, e, p)
 
@@ -230,7 +233,7 @@ def arrangement(l1, l2, email, password):
                         success = True
                     except:
                         success = False
-                        print("Login Unsuccessfull")
+                        return render_template("myfail.html")
                         
     if (success == True):
 
@@ -386,6 +389,6 @@ def readfile1(l, email, password):
         try:
             df = pd.read_csv(l)
         except:
-            return "Failed : Check your format"
+            return render_template("myfail.html")
     
     return process1(df, email, password)
