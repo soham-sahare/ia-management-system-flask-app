@@ -171,24 +171,24 @@ def process(df, emai, paswrd):
 def readfile(l, e, p):
 
     try:
-        df = pd.read_csv(l)
+        df = pd.read_excel(l)
     except:
         try:
-            df = pd.read_excel(l)
+            df = pd.read_csv(l)
         except:
-            return "Failed"
+            return "Failed : Check your format"
     
     return process(df, e, p)
 
 def arrangement(l1, l2, email, password):
     
     try:
-        df = pd.read_csv(l2)
+        df = pd.read_excel(l2)
     except:
         try:
-            df = pd.read_excel(l2)
+            df = pd.read_csv(l2)
         except:
-            return "Failed"
+            return "Failed : Check your format"
 
     from_, password = email, password
 
@@ -381,11 +381,11 @@ def process1(df, emai, paswrd):
 def readfile1(l, email, password):
 
     try:
-        df = pd.read_csv(l)
+        df = pd.read_excel(l)
     except:
         try:
-            df = pd.read_excel(l)
+            df = pd.read_csv(l)
         except:
-            return "Failed"
+            return "Failed : Check your format"
     
     return process1(df, email, password)
